@@ -1,11 +1,5 @@
 ﻿using DataStructureAndAlgorithm.DataStructure.LinkedListModel;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace DataStructureAndAlgorithm.DataStructure
 {
@@ -132,7 +126,7 @@ namespace DataStructureAndAlgorithm.DataStructure
                 node.Next = newNode;
 
                 //For last element node.Next will be null
-                if (node.Next != null)
+                if (newNode?.Next != null)
                 {
                     //new node's next node's previous should have reference to new node
                     newNode.Next.Pervious = newNode;
@@ -190,9 +184,9 @@ namespace DataStructureAndAlgorithm.DataStructure
 
                 //For last element node.Next will be null
 
-                node.Next.Pervious ??= node.Pervious;
                 if (node.Next != null)
                 {
+                    node.Next.Pervious ??= node.Pervious;
                 }
             }
 
