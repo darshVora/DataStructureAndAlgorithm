@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructureAndAlgorithm", "DataStructureAndAlgorithm\DataStructureAndAlgorithm.csproj", "{060C7F12-4183-426A-B2C5-6D6C7E0BC410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructureAndAlgorithm", "DataStructureAndAlgorithm\DataStructureAndAlgorithm.csproj", "{060C7F12-4183-426A-B2C5-6D6C7E0BC410}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9B7A79CA-64C5-4D22-A6BB-84E262935EF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructureAndAlgorithm.Test", "Test\DataStructureAndAlgorithm.Test\DataStructureAndAlgorithm.Test.csproj", "{A7574934-092F-4DA7-98E1-AE6676A43336}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{060C7F12-4183-426A-B2C5-6D6C7E0BC410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{060C7F12-4183-426A-B2C5-6D6C7E0BC410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{060C7F12-4183-426A-B2C5-6D6C7E0BC410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7574934-092F-4DA7-98E1-AE6676A43336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7574934-092F-4DA7-98E1-AE6676A43336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7574934-092F-4DA7-98E1-AE6676A43336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7574934-092F-4DA7-98E1-AE6676A43336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7574934-092F-4DA7-98E1-AE6676A43336} = {9B7A79CA-64C5-4D22-A6BB-84E262935EF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9D26B72-C347-49CC-9118-E3328EC0F88A}
