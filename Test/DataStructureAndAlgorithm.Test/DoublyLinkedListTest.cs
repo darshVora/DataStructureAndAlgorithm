@@ -5,7 +5,7 @@ using DataStructureAndAlgorithm.DataStructure;
 namespace DataStructureAndAlgorithm.Test
 {
     [TestFixture]
-    public class ListTest
+    public class DoublyLinkedListTest
     {
         private IList<int> _testList;
 
@@ -13,7 +13,7 @@ namespace DataStructureAndAlgorithm.Test
         [SetUp]
         public void Setup()
         {
-            _testList = new DataStructure.List<int>();
+            _testList = new DoublyLinkedList<int>();
         }
 
         // Test: Add method - Add a single item to the list

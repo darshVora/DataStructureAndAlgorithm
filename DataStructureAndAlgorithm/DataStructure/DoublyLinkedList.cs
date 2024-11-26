@@ -91,7 +91,7 @@ namespace DataStructureAndAlgorithm.DataStructure
         {
             var node = head;
 
-            for (int i = 0; i <= index; i++)
+            for (int i = 0; i < index; i++)
             {
                 node = node.Next;
             }
@@ -101,7 +101,7 @@ namespace DataStructureAndAlgorithm.DataStructure
 
         public void Insert(int index, T item)
         {
-            if (index < 0 || index >= size)
+            if (index < 0 || index > size)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -116,13 +116,14 @@ namespace DataStructureAndAlgorithm.DataStructure
             {
                 var node = head;
 
-                for (int i = 0; i < index; i++)
+                //Go to node before index
+                for (int i = 0; i < index - 1; i++)
                 {
                     node = node.Next;
                 }
 
                 //New node with previous -> node, next -> node.next 
-                var newNode = new DoublyLinkedListNode<T>(item, node, node.Next);
+                var newNode = new DoublyLinkedListNode<T>(item, node, node?.Next);
                 node.Next = newNode;
 
                 //For last element node.Next will be null
@@ -142,12 +143,27 @@ namespace DataStructureAndAlgorithm.DataStructure
 
             var node = head;
 
-            while (node?.Next != null)
+            while (node != null)
             {
                 if (equalityComparer.Equals(node.Value, item))
                 {
-                    node.Pervious.Next = node.Next;
-                    node.Next.Pervious = node.Pervious;
+                    //For first element node.Previous will be null
+                    if (node.Pervious != null)
+                    {
+                        node.Pervious.Next = node.Next;
+                    }
+                    else
+                    {
+                        //Change head reference to node -> next when head element is removed
+                        head = node.Next;
+                    }
+
+                    //For last element node.next will be null
+                    if (node.Next != null)
+                    {
+                        node.Next.Pervious = node.Pervious;
+                    }
+
                     size--;
                     return true;
                 }
