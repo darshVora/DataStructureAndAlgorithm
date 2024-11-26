@@ -132,8 +132,9 @@ namespace DataStructureAndAlgorithm.DataStructure
             EnsureCapacity();
 
             //Increase size by 1 then shift element by 1
-            for (int i = ++size; index <= i; i--)
+            for (int i = ++size; index < i; i--)
             {
+                //Copy element from current to current - 1
                 items[i] = items[i - 1];
             }
 
@@ -167,6 +168,7 @@ namespace DataStructureAndAlgorithm.DataStructure
             if (size > 0)
             {
                 Array.Clear(items, 0, size);
+                size = 0;
             }
         }
 
