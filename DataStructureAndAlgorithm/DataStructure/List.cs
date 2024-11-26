@@ -4,6 +4,7 @@ namespace DataStructureAndAlgorithm.DataStructure
 {
     /// <summary>
     /// Implementation of Dynamic Array, Supports all list operations.
+    /// Implement IList interface
     /// </summary>
     /// <typeparam name="T">Type of Value in List</typeparam>
     public class List<T> : IList<T>

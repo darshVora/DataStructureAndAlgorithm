@@ -5,8 +5,9 @@ namespace DataStructureAndAlgorithm.DataStructure
 {
     /// <summary>
     /// Implementation of doubly linked list, Support all list operations
+    /// Implement IList interface
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Type of any value in List</typeparam>
     public class DoublyLinkedList<T> : IList<T>
     {
         private DoublyLinkedListNode<T>? head;

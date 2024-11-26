@@ -102,7 +102,7 @@ namespace DataStructureAndAlgorithm.Test
             _testList.Add(5);
             _testList.Insert(0, 10); // Insert 10 at index 0
             _testList.Insert(_testList.Count, 20); // Insert 20 at Last index
-            ClassicAssert.AreEqual(20, _testList[2], "First item should be 10.");
+            ClassicAssert.AreEqual(20, _testList[2], "Last item should be 20.");
             ClassicAssert.AreEqual(10, _testList[0], "First item should be 10.");
             ClassicAssert.AreEqual(5, _testList[1], "Second item should be 5.");
         }
