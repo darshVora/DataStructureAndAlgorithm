@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Algorithm\" />
+    <Folder Include="Algorithm\DynamicProgramming\" />
   </ItemGroup>
 
 </Project>
