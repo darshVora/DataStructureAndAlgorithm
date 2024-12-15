@@ -37,7 +37,7 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming
         /// <returns>Ways you can travel on 2D grid</returns>
         public static long GridTraveller(int m, int n)
         {
-            if(m == 0 || n == 0) return 0;
+            if (m == 0 || n == 0) return 0;
             var grid = new long[m + 1, n + 1];
             grid[1, 1] = 1;
 
@@ -61,5 +61,41 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming
 
             return grid[m, n];
         }
+
+
+        /// <summary>
+        /// Can target sum be achieved using given numbers
+        /// Use element of array multiple times
+        /// All input numbers are non negative
+        /// </summary>
+        /// <param name="targetSum">Sum to achieve</param>
+        /// <param name="numbers">Numbers array</param>
+        /// <returns></returns>
+        public static bool CanSum(int targetSum, int[] numbers)
+        {
+            var targetSumArray = new bool[targetSum + 1];
+
+            //Can always do 0 without any numbers
+            targetSumArray[0] = true;
+
+            for(int i = 0;i < targetSum; i++)
+            {
+                if (targetSumArray[i])
+                {
+                    foreach (var number in numbers)
+                    {
+                        var arrayIndex = i + number;
+
+                        if(arrayIndex <= targetSum)
+                        {
+                            targetSumArray[arrayIndex] = true;
+                        }
+                    }
+                }
+            }
+
+            return targetSumArray[targetSum];
+        }
+
     }
 }
