@@ -96,6 +96,46 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming
 
             return targetSumArray[targetSum];
         }
+        /// <summary>
+        /// Can target sum be achieved using given numbers
+        /// Use element of array multiple times
+        /// All input numbers are non negative
+        /// </summary>
+        /// <param name="targetSum">Sum to achieve</param>
+        /// <param name="numbers">Numbers array</param>
+        /// <returns>Shortest sequence of elements to achieve target sum</returns>
+        public static List<int> BestSum(int targetSum, List<int> numbers)
+        {
+            var targetSumSequences = new List<int>[targetSum + 1];
 
+            //You can always reach 0 with empty array
+            targetSumSequences[0] = new List<int>();
+
+            for (int i = 0; i < targetSum; i++)
+            {
+                //target sum sequence should not be null means it's reachable by given numbers
+                if (targetSumSequences[i] != null)
+                {
+                    foreach (var number in numbers)
+                    {
+                        var arrayIndex = i + number;
+
+                        // Array index should not exceed target sum otherwise it'll be out of bound
+                        if (arrayIndex <= targetSum)
+                        {
+                            //Add result to target sequence if it's null or result's count lesser
+                            //means we can achieve target sum using less sequence
+                            if (targetSumSequences[arrayIndex] == null || targetSumSequences[arrayIndex].Count > targetSumSequences[i].Count + 1)
+                            {
+                                //Copy list and add current number
+                                targetSumSequences[arrayIndex] = [.. targetSumSequences[i], number];
+                            }
+                        }
+                    }
+                }
+            }
+
+            return targetSumSequences[targetSum];
+        }
     }
 }
