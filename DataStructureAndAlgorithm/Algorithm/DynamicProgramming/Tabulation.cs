@@ -96,6 +96,7 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming
 
             return targetSumArray[targetSum];
         }
+        
         /// <summary>
         /// Can target sum be achieved using given numbers
         /// Use element of array multiple times
