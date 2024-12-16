@@ -33,5 +33,46 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming.Patterns
 
             return stairsArray[n];
         }
+
+        /// <summary>
+        /// You are a professional robber planning to rob houses along a street. 
+        /// Each house has a certain amount of money stashed, 
+        /// the only constraint stopping you from robbing each of them is that adjacent houses 
+        /// have security systems connected and it will automatically contact the police 
+        /// if two adjacent houses were broken into on the same night.
+        /// https://leetcode.com/problems/house-robber/description/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int Rob(int[] nums)
+        {
+            return Rob(nums, 0, new int?[nums.Length]);
+        }
+
+        static int Rob(int[] nums, int index, int?[] robResult)
+        {
+            if (robResult[index] != null)
+            {
+                //Return result if already computed
+                return robResult[index].Value;
+            }
+
+            // base case scenario
+            if (index == nums.Length - 1) return nums[index];
+
+            //You can either rob current house + from houses not including next one
+            var rob1 = nums[index] + (index + 2 >= nums.Length ? 0 : Rob(nums, index + 2, robResult));
+            
+            //Or you can rob next house
+            var rob2 = (index + 1) >= nums.Length ? 0 : Rob(nums, index + 1, robResult);
+
+            //Take maximum amount
+            var maxRobberyOpportunity = Math.Max(rob1, rob2);
+
+            //Store result
+            robResult[index] = maxRobberyOpportunity;
+
+            return maxRobberyOpportunity;
+        }
     }
 }
