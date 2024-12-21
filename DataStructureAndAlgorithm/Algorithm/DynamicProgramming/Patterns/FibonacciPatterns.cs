@@ -62,7 +62,7 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming.Patterns
 
             //You can either rob current house + from houses not including next one
             var rob1 = nums[index] + (index + 2 >= nums.Length ? 0 : Rob(nums, index + 2, robResult));
-            
+
             //Or you can rob next house
             var rob2 = (index + 1) >= nums.Length ? 0 : Rob(nums, index + 1, robResult);
 
@@ -73,6 +73,45 @@ namespace DataStructureAndAlgorithm.Algorithm.DynamicProgramming.Patterns
             robResult[index] = maxRobberyOpportunity;
 
             return maxRobberyOpportunity;
+        }
+
+        /// <summary>
+        /// The alternating sum of a 0-indexed array is defined as the 
+        /// sum of the elements at even indices minus the sum of the elements at odd indices.
+        /// For example, the alternating sum of [4,2,5,3] is (4 + 5) - (2 + 3) = 4.
+        /// Given an array nums, return the maximum alternating sum of any subsequence of nums
+        /// (after reindexing the elements of the subsequence).
+        /// https://leetcode.com/problems/maximum-alternating-subsequence-sum/description/
+        /// </summary>
+        /// <param name="nums">numbers</param>
+        /// <returns>Max Alternating Subsequence Sum</returns>
+        public static long MaxAlternatingSum(int[] nums)
+        {
+            //Sum result must store negative as well as positive result
+            var sumResult = new long?[2, nums.Length];
+
+            return MaxAlternatingSum(nums, 0, true, sumResult);
+        }
+
+        public static long MaxAlternatingSum(int[] nums, int index, bool isPositive, long?[,] sumResult)
+        {
+            //Base condition
+            if (index >= nums.Length)
+            {
+                return 0;
+            }
+
+            // Return result if already exist
+            if (sumResult[Convert.ToInt32(isPositive), index] != null)
+            {
+                return sumResult[Convert.ToInt32(isPositive), index].Value;
+            }
+
+            // multiply with -1 if negative
+            var sum = isPositive ? nums[index] : -1 * nums[index];
+
+            // You can either choose current sum + next with negative or next with positive 
+            return (sumResult[Convert.ToInt32(isPositive), index] = Math.Max(sum + MaxAlternatingSum(nums, index + 1, !isPositive, sumResult), MaxAlternatingSum(nums, index + 1, isPositive, sumResult))).Value;
         }
     }
 }
